@@ -42,10 +42,9 @@ Arrays.stream(split(text)) <br />
 * HTTP Status
  - 302를 만나면 브라우저는 location 헤더 값이 있겠구나고 생각하고, location에 있는 값으로 다시 서버에 요청한다. 모든 리다이렉트 API는 이러한 방식이다.<br/>
  - 200은 index.html을 body에 담아서 보내는거라 리다이렉트 되지 않는다.<br/>
-* HTTP 상태 vs 무상태 
+* HTTP 상태 vs 무상태
  - 상태 protocol: 서버가 클라이언트의 상태값을 계속 갖고 있는 것(connection을 계속 이어간다.) <br/>
  - 무상태 protocol: 서버가 클라이언트에 결과를 보내면 connection을 끊어버린다.<br/>
- - HTTP는 상태를 가질수 있는 방식은 쿠키밖에 없다. 세션도 쿠키기반이다. <br/>
  - 세션은 정보를 서버에 저장하고, 세션 ID를 쿠키로 전달한다.<br/>
 * CSRF 토큰: 주요 요청 직전에 발급하는 토큰으로, 이와 맞지 않으면 요청을 무효화시킨다.
 
@@ -80,4 +79,11 @@ Arrays.stream(split(text)) <br />
 * Servlet과 JSP 시작 - 1
  - @WebServlet과 extends HttpServlet 되어 있는 class를 등록한다. 
 
+## 5일차 - MVC 프레임워크 1단계 구현 실습
+* 배움 관련 이야기
+ - 주변사람과의 비교는 결국 나를 초라하게 만든다.
+* Servlet을 사용하여 MVC 프레임워크 구축하기
+ - doGet, doPost를 사용하는 많은 Servlet Controller들을 Controller Interface 구현체로 만들어 리팩토링하기   
+
+## 6일차 - MVC 프레임워크 및 JDBC
                                                                                                                                     

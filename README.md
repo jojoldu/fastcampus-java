@@ -86,4 +86,26 @@ Arrays.stream(split(text)) <br />
  - doGet, doPost를 사용하는 많은 Servlet Controller들을 Controller Interface 구현체로 만들어 리팩토링하기   
 
 ## 6일차 - MVC 프레임워크 및 JDBC
-                                                                                                                                    
+* MVC 프레임워크 Flow
+ - 모든 요청은 중앙집중형 DispatcherServlet이 받는다. 요청에 대한 url을 RequestMapping에게 준다     
+ - RequestMapping은 url에 해당하는 Controller를 DispatcherServlet에게 전달해준다.
+ - DispatcherServlet은 RequestMapping에게 받은 Controller를 실행시킨다.
+ - J2EE 패턴중 Front Controller패턴이라고 보면 된다. (DispatcherServlet가 Front Controller라고 보면 된다.) 
+ - Controller은 사용자가 입력한 값에 대한 유효성 처리를 담당한다.
+ - Controller은 Model과 View 사이를 연결하는 연결자 역할을 한다.
+ - 비지니스 로직은 Model에서 구현해야 한다.
+ - View는 Controller에게 받은 데이터를 출력시키기만 한다.
+
+* 서블릿 Life Cycle
+ - init() : 서블릿 생성시 처리할 내용을 담고 있는 메소드
+ - service() : 실제 수행될 로직을 담당
+ - destroy() : 후처리
+ - 컨테이너 : 해당하는 것(서블릿, 빈)들의 라이프사이클을 관리하는 역할
+
+* loadOnStartup
+ - 서블릿컨테이너가 시작될때 해당 설정값을 가지고 있는 서블릿 인스턴스를 생성하고 init() 를 호출해준다.
+
+* JDBC
+ - 문제점3 : 서버를 재시작하면 데이터가 사라진다. 영구보존 할수있는 방법을 도입해보자.
+ - DAO는 DB, 외부API등 데이터 접근과 관련한 모든 처리를 담당한다.
+ - JDBC는 인터페이스이다. 각 DBMS의 드라이버를 구현체로 사용하기때문에 DBMS 교체가 용이하다.                                                                                                                             

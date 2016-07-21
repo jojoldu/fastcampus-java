@@ -109,3 +109,9 @@ Arrays.stream(split(text)) <br />
  - 문제점3 : 서버를 재시작하면 데이터가 사라진다. 영구보존 할수있는 방법을 도입해보자.
  - DAO는 DB, 외부API등 데이터 접근과 관련한 모든 처리를 담당한다.
  - JDBC는 인터페이스이다. 각 DBMS의 드라이버를 구현체로 사용하기때문에 DBMS 교체가 용이하다.                                                                                                                             
+
+## 7일차 - Ajax
+ * JDBC 코드리뷰 
+  - Object... parameters : 가변인자 (배열처럼 쓸수있으며 없어도 컴파일 에러가 없음 단, 인자의 마지막에만 위치할 수 있음)
+  - try-with-resources는 AutoCloseable을 구현한 객체일 경우에만 가능하다
+  - web.xml의 welcome-file-list는 root path로 접근시 무조건 먼저 읽게 하는 설정이다. 이를 수정해야 원하는 페이지로 이동가능

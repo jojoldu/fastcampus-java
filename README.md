@@ -145,3 +145,31 @@ Arrays.stream(split(text)) <br />
 
  * 실습 - AWS 배포
   -   
+
+## 10일차 - Spring MVC
+ * AWS 배포 리뷰
+  - Symbolic link로 설정들을 잡아놓으면 이후 버전 업데이트시 변경양이 최소화됨
+  - 웹서버들의 virtual host를 통해 동일 IP에서도 호스트에 따라 할당되는 프로젝트 다르게 처리가능
+ 
+ * 스프링 MVC
+  - Bean : Spring 프레임워크가 관리하는 인스턴스, <br/>
+  Bean은 Spring이 인스턴스 생성/초기화/소멸 작업을 담당 <br/>
+  즉, 인스턴스의 라이프사이클을 관리한다.
+  - 서블릿컨테이너(ex: 톰캣) 은 프로젝트의 여러 서블릿들을 관리한다. 서블릿 저장소라고 봐도 무방하다. <br/>
+  여기서 서블릿컨테이너가 서블릿들을 초기화하면서 Bean을 관리하는 저장소인 Spring Framework가 생성된다. <br/>
+  즉, 서블릿컨테이너 안에 여러 서블릿들이 있고, 그 서블릿들중 하나가 Spring이며, Spring에서 관리하는 Class를 Bean이라 한다.
+  - POJO : 순수한 Java Class (특정 서블릿이나 프레임워크에 종속적이지 않는 Java class)
+  - POJO가 특정 클래스를 상속받지 않았는데도 Spring에서 관리되도록 할수 있는데 이는 해당 class를 Bean으로 관리되도록 설정할수있기 때문이다.  
+  - DispatcherServlet는 서블릿 컨테이너가 관리하지만, 확장포인트가 있어 Spring에서 설정 수정이 가능하다.
+  - BeanFactory를 applicationContext가 상속하고 있다. 그래서 Bean에 관련한 기능들은 BeanFactory가 하고 있고 그외에 추가적인 기능들은 ApplicationContext에 추가되어있다.
+  - 테스트 코드 작성을 예로 들면 <br/>
+  ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml"); 로 선언하면 Bean들을 다 사용할 수 있게 된다.
+  - @Bean의 @Component 차이는?<br/>
+  외부 라이브러리들을 Bean으로 등록하고 싶은 경우엔 @Bean으로 (예를들면 ObejctMapper의 경우 ObjectMapper Class에 @Component를 선언할수 없으니 직접 객체생성하는 메소드를 @Bean으로 등록하여 사용한다),<br/>
+  내가 직접 컨트롤할수있는 Class들의 경우엔 @Component를 선언해서 사용한다
+
+ * web.xml없이 개발하기
+  - 서블릿 3.0부터 지원하는 ServletContainerInitializer(WebApplicationInitializer)를 통해 가능하다.
+
+ * MVC 프레임워크 만들기
+  - 새로운 Request 요청은 new MockHttpServletRequest("POST", "/users") 식으로 만들수 있다.   

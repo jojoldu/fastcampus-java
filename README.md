@@ -172,4 +172,16 @@ Arrays.stream(split(text)) <br />
   - 서블릿 3.0부터 지원하는 ServletContainerInitializer(WebApplicationInitializer)를 통해 가능하다.
 
  * MVC 프레임워크 만들기
-  - 새로운 Request 요청은 new MockHttpServletRequest("POST", "/users") 식으로 만들수 있다.   
+  - 새로운 Request 요청은 new MockHttpServletRequest("POST", "/users") 식으로 만들수 있다.
+
+## 11일차 - Spring MVC 실습
+ * spring-web의 META-INF/services를 보면 ServletContainerInitializer에 풀네임의 initializer가 지정되어 있다.
+ * 열어보면 WebApplicationInitializer 인터페이스를 구현한 모든 클래스들을 초기화 시키는 코드가 있음을 알수 있다.
+ * MyWebInitializer에는 GET/POST 외에 다른 HTTP Method를 받을수 있도록 꼼수로 ```<input type="hidden" name="_method" value="PUT"> ```로 지정하면 HiddenHttpMethodFilter 클래스가 처리해준다.
+ * maven plugin에 downloadSources를 추가하면 이클립스에서 자동으로 jar를 attachment 해준다 (인텔리J는 자동으로 해줘서 신경안썼는데 유용할것같다!)
+ * form의 input name은 model 객체의 field 이름과 매칭되는게 아니라 field의 set 메소드의 이름을 보고 자동으로 매칭을 시킨다.
+ * Java Bean의 규약은 <br/>
+ 1) Default 생성자를 명시 (Controller에서 자동 매칭되는것은 디폴트 생성자를 통해서 하기 때문에) <br/>
+ 2) getter/setter 메소드     
+
+ * 2가지 경우 중 하나는 꼭 해당되어야하는 if문을 작성할 경우 보통은 if/else로 잡지만 좀 더 안전하게 가려면 if/else if로 정상path를 잡고 else로 throw new Exception 한다. exception에는 404나 500 같은 status를 추가한다.

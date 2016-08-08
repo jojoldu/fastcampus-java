@@ -185,3 +185,46 @@ Arrays.stream(split(text)) <br />
  2) getter/setter 메소드     
 
  * 2가지 경우 중 하나는 꼭 해당되어야하는 if문을 작성할 경우 보통은 if/else로 잡지만 좀 더 안전하게 가려면 if/else if로 정상path를 잡고 else로 throw new Exception 한다. exception에는 404나 500 같은 status를 추가한다.
+
+## 13일차 - Mockito를 활용한 테스트
+ * class에서 상태를 가진다는게 무슨 뜻인지?
+  - 상태 == 데이터 <br/>
+  - 메소드/함수 == 데이터(상태)를 변경 <br/>
+  - 상태 (데이터)를 관리하는 방법 <br/>
+  메소드의 인자를 활용<br/>
+  클래스의 필드 상태값을 변경 가능하도록 구현 <br/>
+  클래스의 필드 상태값을 변경 불가능하도록 구현 <br/>
+
+ * static import : static 메소드들을 로컬 메소드처럼 메소드앞에 namespace 없이 바로 사용 가능하게 하는것
+ * mockito
+  - when : 어떤 메소드를 호출하면 <br/>
+  - thenReturn : 여기에 포함된 값을 리턴시킨다. <br/>
+  - thenThrow : exception을 발생시킨다.<br/>
+  - verify : 특정 객체가 몇번 호출 되면 등을 지정 <br/>
+  - @RunWith(MockitoJUnitRunner.class) TestClass : mockito 사용환경 구축 <br/>
+  - @Mock private UserDao userDao : userDao의 가짜 구현체를 생성 <br/>
+  - @InjectMocks private UserService userService : 내가 지정한(@Mock) 을 해당 Bean의 @Autowired 객체에 대신하고 싶다. <br/>
+
+ * Junit
+  - @Test(expected = 원하는 Exception.class) : 해당 메소드는 실행시 지정한 Exception.class가 무조건 발생한다로 비교
+
+ * 객체지향적 코딩
+  - 객체지향적인 코딩이란 상태를 가지고 있는 객체가 상태를 변경하도록 코딩을 해야한다.
+  - 코드가 객체지향적이라면 mockito와 같은 테스트 프레임워크가 없더라도 테스트코드를 작성할수가 있다.
+  - service가 비지니스로직의 모든것을 처리하진 않는다. 상태를 가지는 객체가 로직을 처리하는것이 맞다.
+  - service는 도메인 객체들간의 관계를 정리하고, 캐시/트랜잭션들에 대한 처리를 할뿐이다.
+
+ * 빈 컨테이너 설정 관리
+  - 모든 Layer의 설정을 하나에서 관리 vs Layer별로 설정을 분리 
+  - excludeFilters에 Controller.class를 지정해서 @ComponentScan에서 제외시키겠다.
+  - includeFilters에 Controller.class를 지정해서 해당 어노테이션만 스캔하겠다.
+  - 부모/자식 구조
+   프레젠테이션 Layer(Controller)만 다르고 Service/Dao설정을 재사용 <br/>
+
+ * 인스턴스 추가/삭제
+  - @PostConstruct : Bean이 생성되고 DI후, 바로 실행할 메소드 지정
+  - @PreDestroy : Bean이 삭제되기 바로 직전에 실행할 메소드 지정
+
+ * Property와 환경변수
+  - reload resource bundle을 통해 주기적으로 properties를 체크해서 적용하도록 할수는 있다.
+  - 변경이 있으면 안되는 DB설정 같은 경우는 제외하고, 자주 변경이 필요한 properties만 reload 설정에 포함시킨다. (설정간 분리가능)

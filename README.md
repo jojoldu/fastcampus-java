@@ -228,3 +228,27 @@ Arrays.stream(split(text)) <br />
  * Property와 환경변수
   - reload resource bundle을 통해 주기적으로 properties를 체크해서 적용하도록 할수는 있다.
   - 변경이 있으면 안되는 DB설정 같은 경우는 제외하고, 자주 변경이 필요한 properties만 reload 설정에 포함시킨다. (설정간 분리가능)
+
+## 14일차 - AOP!!
+ * properties는 한글을 유니코드로 관리하는게 디폴트다.
+ * messageSource로 properties의 값을 몇초 주기로 리로딩할수 있다. <br/>
+ ![messageSource config code](./images/messageSource.png)
+ <br/>
+
+ * AOP가 필요한 요구사항
+  - 모든 Controller와 Dao에서 처리시간이 500ms 이상인 경우는 로그를 남겨라
+  - Dao 클래스의 모든 method에 인자로 전달되는 인자를 debug 레벨로 로그를 남겨라
+
+ * AOP가 해결하고자 하는것은 비지니스로직의 중복제거가 아닌 시스템 전반적인 중복을 제거하기 위함
+  - 비지니스 로직 코드의 중복 제거 : OOP
+  - 인프라 코드의 중복 제거 : AOP
+
+ * FactoryBean : new 키워드를 통해 생성될수 없는 Bean들을 생성하기 위해 필요
+  - 예를 들어, 기존 Bean에 몇가지 기능이 추가된 ProxyBean이 필요할때 FactoryBean을 implement하여 빈을 등록한다
+  - 예전 xml로 Bean을 관리하던 시절에는 FactoryBean의 구현이 필요했지만 현재는 java code로 Bean등록이 가능하므로 현재는 잘쓰이지 않는다.
+
+ * 용어
+  - target : 부가기능을 부여할 대상
+  - advice : target에 제공할 부가 기능을 담은 클래스
+  - joinpoint : sadvice가 적용될 수 있는 위치, 예를 들어 method의 실행단계
+  - pointcut : joinpoint를 선별하는 작업 또는 그 기능을 정의한 모듈

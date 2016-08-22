@@ -271,3 +271,10 @@ Arrays.stream(split(text)) <br />
  * @Cacheable(key="키값") : 해당하는 키값을 캐시하도록 지정 
  * @CacheEvict(key="키값") : 해당하는 키값이 변경되면 캐시데이터를 변경하도록 한다
  * 직접 만든 캐시를 해당 어노테이션으로 관리하고자 한다면 CacheManager 구현체를 만들고 지정하면 된다
+
+## 16일차 - JPA
+ * 설계 패러다임의 변경: Table -> Object
+ * 대세는 쿼리매퍼에서 ORM으로 넘어가고 있다. (C#, 루비등 타언어에선 이미 ORM이 대세)
+ * 하이버네이트와 달리 SpringDataJpa는 interface의 메소드 네이밍으로 조건절 생성
+ * @Transient : DB 컬럼과 맵핑되는것에서 제외시킨다.
+ * @ManyToOne을 지정했다고해서 반대편 Entity에 꼭 OneToMany를 할필요는 없다.

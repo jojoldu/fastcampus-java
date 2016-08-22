@@ -252,3 +252,22 @@ Arrays.stream(split(text)) <br />
   - advice : target에 제공할 부가 기능을 담은 클래스
   - joinpoint : sadvice가 적용될 수 있는 위치, 예를 들어 method의 실행단계
   - pointcut : joinpoint를 선별하는 작업 또는 그 기능을 정의한 모듈
+
+## 15일차 - Transactional & Cache & SpringBoot
+#### Transactional
+ * readOnly = true : select성 메소드에서는 성능이 더 좋아서 추천
+ * isolation level : 하나의 데이터를 반영하는데 동시에 2명이상이 접근했을때 데이터를 어떻게 관리하는지에 대한 개념
+  - tx1에선 select, tx2에선 update를 동시에 요청하면? isolation level마다 다르다. update후 select할지, select하고 update할지
+ * isolation level의 레벨이 낮을수록 성능은 좋고 데이터 무결성 보장성을 낮춘다.
+
+ * propagation : tx 생성 rule
+ * propagation_required : default이며, 상위계층(service)에서 하위 계층(dao)요청시 하위계층에 tx가 없으면 **상위계층의 tx를 사용**한다
+ * propagation_new : 상위계층(service)에서 하위 계층(dao)요청시 하위계층에 tx가 없으면 **새로운 tx를 만든다**
+ * Spring transactional은 runtime exception일 경우에만 rollback되고 checked exception에서는 rollback되지 않는다
+  - rollbackFor = checked Exception을 지정하여 사용할 수 있다.
+ * 테스트 코드 작성시 Dao일 경우에는 테스트 후 DB를 원복시키고 싶을경우가 많으니 class 혹은 method에 @Transactional을 지정하면 된다.
+
+#### Cache
+ * @Cacheable(key="키값") : 해당하는 키값을 캐시하도록 지정 
+ * @CacheEvict(key="키값") : 해당하는 키값이 변경되면 캐시데이터를 변경하도록 한다
+ * 직접 만든 캐시를 해당 어노테이션으로 관리하고자 한다면 CacheManager 구현체를 만들고 지정하면 된다

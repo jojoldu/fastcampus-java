@@ -278,3 +278,23 @@ Arrays.stream(split(text)) <br />
  * 하이버네이트와 달리 SpringDataJpa는 interface의 메소드 네이밍으로 조건절 생성
  * @Transient : DB 컬럼과 맵핑되는것에서 제외시킨다.
  * @ManyToOne을 지정했다고해서 반대편 Entity에 꼭 OneToMany를 할필요는 없다.
+
+## 17일차 - JPA + Profile
+  * @MappedSuperclass : 
+![MappedSuperclass](./images/mappedsuperclass.png)
+
+ * @JpaTest (SpringBoot 1.4부터 지원)
+ * 객체지향적인 코딩이란 객체들끼리 서로 협력해서 일을 처리하도록 하는것
+   - 만약 서비스 메소드에서 직접 필요한 객체를 가져오는 일을 다 하고 있다면 절차지향적인 방법일 확률이 높다
+
+ * API 서버 구축 도구
+   - [Swaggger2](http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) : API를 문서화할수 있는 도구
+   - restTemplate & @SpringBootTest
+   ![RestTemplate&SpringBootTest](./images/resttemplate.png)
+
+ * Flyway DB
+   - 테이블 스키마의 버전관리 (DB계의 Git이라 보면 됨)
+   - 네이밍 규칙: V숫자__설명
+     - ex) V1__init_db_schema.sql
+   - Spring Boot 설정 파일에 spring.jpa.show-sql=true로 설정되어 있으면 서버가 시작할 때 생성되는 테이블 스키마, foreign key 생성 쿼리를 확인할 수 있다.
+   

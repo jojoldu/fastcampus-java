@@ -313,8 +313,9 @@ Thread수를 초과한 사용자들은 큐에서 대기하여 처리될때마다
    - 만약 서비스 메소드에서 직접 필요한 객체를 가져오는 일을 다 하고 있다면 절차지향적인 방법일 확률이 높다
 
  * API 서버 구축 도구
-   - [Swaggger2](http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) : API를 문서화할수 있는 도구
+   - [Swaggger2](http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) : API를 문서화할수 있는 도구 [상세 내용](http://jojoldu.tistory.com/31)
    - restTemplate & @SpringBootTest
+
    ![RestTemplate&SpringBootTest](./images/resttemplate.png)
 
  * Flyway DB

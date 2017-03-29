@@ -103,12 +103,10 @@ Arrays.stream(split(text))
   - 서블릿컨테이너 : 서블릿을 실행시켜주는 역할
   - 서블릿 컨테이너에서 서블릿 인스턴스는 1개만 생성되고 이를 재사용하는 방식이다.
   - 서블릿 컨테이너는 모든 사용자 요청에 대해 Thread를 생성해야하나? 1000명이 요청하면 1000개의 Thread가 필요한가? 
-```
-서블릿 컨테이너는 서버가 생성할 수 있는 Thread수를 제한한다. 
-Thread Pool을 사용해 제한된 **Thread를 재사용**한다.
-Thread수를 초과한 사용자들은 큐에서 대기하여 처리될때마다 Thread를 할당한다. 
-그래서 Tomcat 설정에 maxThreads는 최대 Threads수, acceptCount는 큐의 최대 대기자수를 말한다.
-```
+  - 서블릿 컨테이너는 서버가 생성할 수 있는 Thread수를 제한한다. 
+    - Thread Pool을 사용해 제한된 **Thread를 재사용**한다.
+    - Thread수를 초과한 사용자들은 큐에서 대기하여 처리될때마다 Thread를 할당한다. 
+    - 그래서 Tomcat 설정에 maxThreads는 최대 Threads수, acceptCount는 큐의 최대 대기자수를 말한다.
   
 * Servlet과 JSP 시작 - 1
   - @WebServlet과 extends HttpServlet 되어 있는 class를 등록한다. 

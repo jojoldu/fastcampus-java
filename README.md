@@ -254,6 +254,7 @@ Arrays.stream(split(text))
    - 변경이 있으면 안되는 DB설정 같은 경우는 제외하고, 자주 변경이 필요한 properties만 reload 설정에 포함시킨다. (설정간 분리가능)
 
 ## 14일차 - AOP
+ * [AOP정리 참고](http://jojoldu.tistory.com/69)
  * properties는 한글을 유니코드로 관리하는게 디폴트다.
  * messageSource로 properties의 값을 몇초 주기로 리로딩할수 있다. 
  ![messageSource config code](./images/messageSource.png)

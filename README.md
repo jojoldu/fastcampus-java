@@ -1,31 +1,7 @@
-
-
-- [패스트캠퍼스 자바 웹 프로그래밍 CAMP](#-패스트캠퍼스-자바-웹-프로그래밍-camp)
-    - [1일차 - TDD 시작](#1-tdd-)
-    - [2일차 - HTTP 웹서버 실습](#2-http-)
-    - [3일차 - HTTP 웹서버 리팩토링 실습](#3-http-)
-    - [4일차 - HTTP 웹서버 코드리뷰](#4-http-)
-    - [5일차 - MVC 프레임워크 1단계 구현 실습](#5-mvc-1-)
-    - [6일차 - MVC 프레임워크 및 JDBC](#6-mvc-jdbc)
-    - [7일차 - Ajax](#7-ajax)
-    - [8일차 - 중간점검](#8-)
-    - [9일차 - AWS 배포](#9-aws-)
-    - [10일차 - Spring MVC](#10-spring-mvc)
-    - [11일차 - Spring MVC 실습](#11-spring-mvc-)
-    - [13일차 - Mockito를 활용한 테스트](#13-mockito-)
-    - [14일차 - AOP](#14-aop)
-    - [15일차 - Transactional & Cache & SpringBoot](#15-transactional-cache-springboot)
-            - [Transactional](#transactional)
-            - [Cache](#cache)
-    - [16일차 - JPA 소개](#16-jpa-)
-    - [17일차 - JPA + Profile](#17-jpa-profile)
-
-
 # 패스트캠퍼스 자바 웹 프로그래밍 CAMP
-![단체사진](./images/fastcampus-java-1.jpg)
-(단체사진)
- * 자바지기(박재성)님의 [패스트캠퍼스 자바 웹 프로그래밍 CAMP](http://www.fastcampus.co.kr/dev_camp_jwp/) 강의 내용 정리
- * 광고 아니라 진심으로 150만원 상당의 수강료가 아깝지 않은 명품 강의였다.
+ 
+* 자바지기(박재성)님의 [패스트캠퍼스 자바 웹 프로그래밍 CAMP](http://www.fastcampus.co.kr/dev_camp_jwp/) 강의 내용 정리
+* 광고 아니라 진심으로 150만원 상당의 수강료가 아깝지 않은 명품 강의였다.
 
 ## 1일차 - TDD 시작
 * 일반적인 main()을 이용한 테스트 방식의 문제점
